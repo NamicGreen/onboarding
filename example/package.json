@@ -1,5 +1,5 @@
 {
-  "name": "@NamicGreen/onboarding-example",
+  "name": "@namicgreen/onboarding-example",
   "homepage": ".",
   "version": "0.0.1",
   "private": true,
@@ -10,7 +10,7 @@
     "eject": "node ../node_modules/react-scripts/bin/react-scripts.js eject"
   },
   "dependencies": {
-    "@namic-io/onboarding": "link:..",
+    "@namicgreen/onboarding": "link:..",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.1",

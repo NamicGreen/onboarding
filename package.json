@@ -1,5 +1,5 @@
 {
-  "name": "@NamicGreen/onboarding",
+  "name": "@namicgreen/onboarding",
   "description": "Customer Onboarding Tour",
   "version": "0.0.1",
   "main": "lib/index.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NamicGreen/onboarding.git"
+    "url": "https://github.com/namicgreen/onboarding.git"
   },
   "source": "src/index.tsx",
   "engines": {
@@ -29,7 +29,7 @@
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build",
     "buildnpm": "rollup -c",
-    "release": "yarn buildnpm && changeset publish --ignore-scripts --@namic-io:registry='https://registry.npmjs.org'"
+    "release": "yarn buildnpm && changeset publish --ignore-scripts --@namicgreen:registry='https://registry.npmjs.org'"
   },
   "files": [
     "lib"

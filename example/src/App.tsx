@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 
 import './index.css'
 
-import OnBoarding from '@namic-io/onboarding'
-import '@namic-io/onboarding/src/css/onboarding.css'
+import OnBoarding from '@namicgreen/onboarding'
+import '@namicgreen/onboarding/src/css/onboarding.css'
 import Test from './components/test'
 import config from './constants/onboarding-config'
 
