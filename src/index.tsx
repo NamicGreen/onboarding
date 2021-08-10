@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import Tippy from '@tippyjs/react'
 import 'tippy.js/dist/tippy.css'
 import 'tippy.js/animations/shift-toward-subtle.css'
+import './css/onboarding.css'
 
 const TipContent: React.FC<any> = ({
 	start,
@@ -105,15 +106,16 @@ const OnBoarding: React.FC<any> = ({ id, config, start = false, onClose }) => {
 			rectRef.current.style.height = element.clientHeight + 'px'
 			rectRef.current.style.width = element.clientWidth + 'px'
 
-			if(element.getBoundingClientRect().top === element.offsetParent.getBoundingClientRect().top) {
+			if (
+				element.getBoundingClientRect().top ===
+				element.offsetParent.getBoundingClientRect().top
+			) {
+				rectRef.current.style.top = element.getBoundingClientRect().top + 'px'
+			} else {
 				rectRef.current.style.top =
-				element.getBoundingClientRect().top + 'px'
-			}
-			else {
-				rectRef.current.style.top =
-				element.getBoundingClientRect().top -
-				element.offsetParent.getBoundingClientRect().top +
-				'px'
+					element.getBoundingClientRect().top -
+					element.offsetParent.getBoundingClientRect().top +
+					'px'
 			}
 			rectRef.current.style.left = element.getBoundingClientRect().left + 'px'
 		}
@@ -128,7 +130,7 @@ const OnBoarding: React.FC<any> = ({ id, config, start = false, onClose }) => {
 	return (
 		<React.Fragment>
 			<Tippy
-				placement="auto"
+				placement='auto'
 				reference={curretStepConfig?.element || null}
 				allowHTML
 				content={React.cloneElement(<TipContentElement />, {
