@@ -84,9 +84,9 @@
     "@tippyjs/react": "^4.2.5"
   },
   "bugs": {
-    "url": "https://github.com/NamicGreen/onboarding/issues"
+    "url": "https://github.com/namicgreen/onboarding/issues"
   },
-  "homepage": "https://github.com/NamicGreen/onboarding#readme",
+  "homepage": "https://github.com/namicgreen/onboarding#readme",
   "directories": {
     "example": "example",
     "lib": "lib"

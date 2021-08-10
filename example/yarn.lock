@@ -1478,9 +1478,13 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
-"@namic-io/onboarding@link:..":
-  version "0.0.0"
-  uid ""
+"@namicgreen/onboarding@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@namicgreen/onboarding/-/onboarding-0.0.1.tgz#fc1e1340ccd6a1f6fbcc67ac899de3f1846340f4"
+  integrity sha512-DzycEbzHSapPtm3+mTb/TtG9whYHtIjG62VWD5M89vkRoA9GoaAjXk8EukidygYZVpiLr/4uuxxyNN7CHDOurA==
+  dependencies:
+    "@tippyjs/react" "^4.2.5"
+    tippy.js "^6.3.1"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
