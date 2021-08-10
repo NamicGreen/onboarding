@@ -1,0 +1,94 @@
+{
+  "name": "@namicgreen/onboarding",
+  "description": "Customer Onboarding Tour",
+  "version": "0.0.1",
+  "main": "lib/index.js",
+  "module": "lib/index.modern.js",
+  "author": "src01001100 <hello@namicgreen.io>",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/namicgreen/onboarding.git"
+  },
+  "source": "src/index.tsx",
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "build": "microbundle-crl --no-compress --css inline --format cjs",
+    "start": "microbundle-crl watch --no-compress --format cjs",
+    "prepare": "run-s build",
+    "test": "run-s test:unit test:build",
+    "test:build": "run-s build",
+    "test:lint": "eslint .",
+    "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
+    "test:watch": "react-scripts test --env=jsdom",
+    "predeploy": "cd example && yarn install && yarn run build",
+    "deploy": "gh-pages -d example/build",
+    "buildnpm": "rollup -c",
+    "release": "yarn buildnpm && changeset publish --ignore-scripts --@namicgreen:registry='https://registry.npmjs.org'"
+  },
+  "files": [
+    "lib"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.13.8",
+    "@changesets/cli": "^2.16.0",
+    "@rollup/plugin-commonjs": "^17.1.0",
+    "@rollup/plugin-node-resolve": "^11.2.0",
+    "@rollup/plugin-typescript": "^8.2.0",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^7.2.1",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@types/jest": "^26.0.20",
+    "@types/node": "^12.12.38",
+    "@types/react": "^16",
+    "@types/react-dom": "^16.9.7",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "8.1.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-config-standard-react": "^9.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-standard": "^4.0.1",
+    "gh-pages": "^2.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "microbundle-crl": "^0.13.10",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.0.4",
+    "react-scripts": "^3.4.1",
+    "rollup": "^2.40.0",
+    "rollup-plugin-cleaner": "^1.0.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "typescript": "^4.2.3",
+    "tslib": "^2.3.0"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.2",
+    "react-dom": ">=17.0.2"
+  },
+  "dependencies": {
+    "tippy.js": "^6.3.1",
+    "@tippyjs/react": "^4.2.5"
+  },
+  "bugs": {
+    "url": "https://github.com/NamicGreen/onboarding/issues"
+  },
+  "homepage": "https://github.com/NamicGreen/onboarding#readme",
+  "directories": {
+    "example": "example",
+    "lib": "lib"
+  }
+}

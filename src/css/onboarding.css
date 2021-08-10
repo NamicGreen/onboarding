@@ -1,0 +1,55 @@
+.tipFooter {
+  display: flex;
+  padding: 0.5rem 0px;
+  justify-content: space-between;
+}
+
+[data-tippy-root] {
+  pointer-events: all !important;
+}
+
+.hightlightRect {
+  height: 0px;
+  width: 0px;
+  position: absolute;
+  z-index: 11;
+  border: 1px solid #000;
+  box-shadow: 0 0 1em grey;
+  transition: all 0.3s ease-out;
+}
+
+.withDropshadow {
+  box-shadow: rgb(33 33 33 / 0%) 0px 0px 1px 2px,
+    rgb(33 33 33 / 50%) 0px 0px 0px 5000px;
+}
+
+.tipDotsWrapper {
+  display: flex;
+  margin: 8px 0;
+  justify-content: center;
+}
+
+.tipDots {
+  display: flex;
+  padding: 4px;
+  background: grey;
+  border-radius: 10px;
+}
+
+.tipDots span {
+  height: 6px;
+  width: 6px;
+  background: white;
+  margin-right: 4px;
+  border-radius: 4px;
+  transition: all 0.3s ease-out;
+}
+
+.tipDots span.active {
+  background: yellowgreen;
+  width: 18px;
+}
+
+[data-tippy-root] {
+  pointer-events: all !important;
+}

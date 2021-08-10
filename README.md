@@ -1,2 +1,1 @@
-# onboarding
-Customer Onboarding Tour
+[![Node.js Package](https://github.com/NanicGreen/onboarding/actions/workflows/package_deployment.yml/badge.svg?branch=next)](https://github.com/NanicGreen/onboarding/actions/workflows/package_deployment.yml)

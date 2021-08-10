@@ -1,0 +1,30 @@
+root = true
+
+[*.js]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+
+[*.js]
+indent_style = tab
+indent_size = 2
+singleQuote = true
+useTabs = true
+semi = false
+
+[*.ts]
+indent_style = tab
+indent_size = 2
+singleQuote = true
+useTabs = true
+semi = false
+
+[*.tsx]
+indent_style = tab
+indent_size = 2
+singleQuote = true
+useTabs = true
+semi = false
+
+[Makefile]
+indent_style = tab
