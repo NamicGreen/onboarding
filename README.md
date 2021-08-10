@@ -1,2 +1,0 @@
-# onboarding
-Customer Onboarding Tour
