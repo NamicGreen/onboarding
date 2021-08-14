@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import './index.css'
 
 import OnBoarding from '@namicgreen/onboarding'
-import '@namicgreen/onboarding/lib/css/onboarding.css'
+import '@namicgreen/onboarding/src/css/onboarding.css'
 import Test from './components/test'
 import config from './constants/onboarding-config'
 
