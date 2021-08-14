@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import Tippy from '@tippyjs/react'
+import './css/onboarding.css'
 import 'tippy.js/dist/tippy.css'
 import 'tippy.js/animations/shift-toward-subtle.css'
-import './css/onboarding.css'
+import getCompositeRect from '@popperjs/core/lib/dom-utils/getCompositeRect'
 
 const TipContent: React.FC<any> = ({
 	start,
@@ -79,12 +80,14 @@ const OnBoarding: React.FC<any> = ({ id, config, start = false, onClose }) => {
 
 	useEffect(() => {
 		setTimeout(() => {
-			if (step > 0) {
-				setVisible(true)
-				rectRef.current.style.visibility = 'initial'
-			} else {
-				setVisible(false)
-				rectRef.current.style.visibility = 'hidden'
+			if (rectRef.current) {
+				if (step > 0) {
+					setVisible(true)
+					rectRef.current.style.visibility = 'initial'
+				} else {
+					setVisible(false)
+					rectRef.current.style.visibility = 'hidden'
+				}
 			}
 		}, 1)
 	}, [step])
@@ -99,25 +102,29 @@ const OnBoarding: React.FC<any> = ({ id, config, start = false, onClose }) => {
 		if (element) {
 			element.scrollIntoView({
 				behavior: 'smooth',
-				block: 'end',
-				inline: 'start'
+				block: 'center'
 			})
 			rectRef.current.style.visibility = 'initial'
 			rectRef.current.style.height = element.clientHeight + 'px'
 			rectRef.current.style.width = element.clientWidth + 'px'
-
-			if (
-				element.getBoundingClientRect().top ===
-				element.offsetParent.getBoundingClientRect().top
-			) {
-				rectRef.current.style.top = element.getBoundingClientRect().top + 'px'
-			} else {
-				rectRef.current.style.top =
-					element.getBoundingClientRect().top -
-					element.offsetParent.getBoundingClientRect().top +
-					'px'
+			let position = { x: 0, y: 0 }
+			try {
+				if (conf.parentId) {
+					console.log(document.getElementById(conf.parentId))
+					position = getCompositeRect(
+						element,
+						document.getElementById(conf.parentId)!,
+						true
+					)
+				} else {
+					position = getCompositeRect(element, document.body, false)
+				}
+				rectRef.current.style.left = position.x + 'px'
+				rectRef.current.style.top = position.y + 'px'
 			}
-			rectRef.current.style.left = element.getBoundingClientRect().left + 'px'
+			catch(e) {
+				console.error(e)
+			}
 		}
 
 		conf.element = element

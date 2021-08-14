@@ -1,7 +1,7 @@
 {
   "name": "@namicgreen/onboarding",
   "description": "Customer Onboarding Tour",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "lib/index.js",
   "module": "lib/index.modern.js",
   "author": "src01001100 <hello@namicgreen.io>",
