@@ -1,29 +1,5 @@
 import React from "react";
-/* import { createTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles'
 
-
-const useStyles = makeStyles(theme => ({
-	highLight: {
-		borderColor: 'red',
-		borderWidth: "3px"
-	}
-})
-);
-
-	const HighLighter: React.FC<any> = ({ id, rectRef, onRectClick, config }) => {
-	const classes = useStyles()
-	return (
-		<div
-			id={id}
-			ref={rectRef}
-			className={`hightlightRect ${config.showBackdrop ? 'withDropshadow' : ''
-				} ${classes.highLight}`}
-			style={{ visibility: 'hidden' }}
-			onClick={onRectClick}
-		/>
-	)
-}
- */
 const TipContent: React.FC<any> = ({
 	start,
 	step,
@@ -63,7 +39,6 @@ const TipContent: React.FC<any> = ({
 const config = {
 	showBackdrop: true,
 	tipContent: TipContent,
-/* 	highLighter: HighLighter, */
 	steps: {
 		1: {
 			id: 'step-1',
