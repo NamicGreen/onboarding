@@ -66,6 +66,18 @@ const useStylesApp = makeStyles(theme => ({
 		},
 		'.tippy-arrow': {
 			color: theme.palette.secondary.main,
+		},
+		'.tipFooter': {
+			backgroundColor:'red'
+		},
+		'.hightlightRect': {
+			border: '3px solid yellow'
+		},
+		'.tipDotsWrapper': {
+			backgroundColor: 'green'
+		},
+		'.tipDots': {
+			color: 'violet'
 		}
 	}
 })

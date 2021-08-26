@@ -1,5 +1,5 @@
 import React from "react";
-import { createTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles'
+/* import { createTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles'
 
 
 const useStyles = makeStyles(theme => ({
@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
 })
 );
 
-const HighLighter: React.FC<any> = ({ id, rectRef, onRectClick, config }) => {
+	const HighLighter: React.FC<any> = ({ id, rectRef, onRectClick, config }) => {
 	const classes = useStyles()
 	return (
 		<div
@@ -23,7 +23,7 @@ const HighLighter: React.FC<any> = ({ id, rectRef, onRectClick, config }) => {
 		/>
 	)
 }
-
+ */
 const TipContent: React.FC<any> = ({
 	start,
 	step,
@@ -63,7 +63,7 @@ const TipContent: React.FC<any> = ({
 const config = {
 	showBackdrop: true,
 	tipContent: TipContent,
-	highLighter: HighLighter,
+/* 	highLighter: HighLighter, */
 	steps: {
 		1: {
 			id: 'step-1',
