@@ -1,13 +1,44 @@
 import React from "react";
 
+const TipContent: React.FC<any> = ({
+	start,
+	step,
+	lastStep,
+	curretStepConfig,
+	previousStep,
+	nextStep,
+	onClose
+}) => {
+	return (
+		<div>
+			<div className='tipWrapper'>{curretStepConfig?.content}</div>
+			<div className='tipDotsWrapper'>
+				<div className='tipDots'>
+					{Array(lastStep)
+						.fill(0)
+						.map((_, key) => (
+							<span className={step === key + 1 ? 'active' : 'dot'} key={key} />
+						))}
+				</div>
+			</div>
+			{start && (
+				<div className='tipFooter'>
+					<button disabled={step === 1} onClick={previousStep}>
+						Custom Back
+					</button>
+					{step !== lastStep && <button onClick={onClose}>Custom Skip</button>}
+					<button onClick={step !== lastStep ? nextStep : onClose}>
+						{step !== lastStep ? 'Custom Next' : 'Close'}
+					</button>
+				</div>
+			)}
+		</div>
+	)
+}
+
 const config = {
 	showBackdrop: true,
-	// tipContent: ({step, lastStep, curretStepConfig, previousStep, nextStep, onSkip}) => {
-	// 	return <>
-	// 		<h1 onClick={nextStep}>Manual Tip content {step}</h1>
-	// 		{curretStepConfig?.content}
-	// 	</>
-	// },
+	tipContent: TipContent,
 	steps: {
 		1: {
 			id: 'step-1',

@@ -1,3 +1,1 @@
-interface OnBoardin {
-
-}
+interface OnBoarding {}
