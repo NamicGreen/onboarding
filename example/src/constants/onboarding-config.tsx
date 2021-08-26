@@ -1,13 +1,69 @@
 import React from "react";
+import { createTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles'
+
+
+const useStyles = makeStyles(theme => ({
+	highLight: {
+		borderColor: 'red',
+		borderWidth: "3px"
+	}
+})
+);
+
+const HighLighter: React.FC<any> = ({ id, rectRef, onRectClick, config }) => {
+	const classes = useStyles()
+	return (
+		<div
+			id={id}
+			ref={rectRef}
+			className={`hightlightRect ${config.showBackdrop ? 'withDropshadow' : ''
+				} ${classes.highLight}`}
+			style={{ visibility: 'hidden' }}
+			onClick={onRectClick}
+		/>
+	)
+}
+
+const TipContent: React.FC<any> = ({
+	start,
+	step,
+	lastStep,
+	curretStepConfig,
+	previousStep,
+	nextStep,
+	onClose
+}) => {
+	return (
+		<div>
+			<div className='tipWrapper'>{curretStepConfig?.content}</div>
+			<div className='tipDotsWrapper'>
+				<div className='tipDots'>
+					{Array(lastStep)
+						.fill(0)
+						.map((_, key) => (
+							<span className={step === key + 1 ? 'active' : 'dot'} key={key} />
+						))}
+				</div>
+			</div>
+			{start && (
+				<div className='tipFooter'>
+					<button disabled={step === 1} onClick={previousStep}>
+						Custom Back
+					</button>
+					{step !== lastStep && <button onClick={onClose}>Custom Skip</button>}
+					<button onClick={step !== lastStep ? nextStep : onClose}>
+						{step !== lastStep ? 'Custom Next' : 'Close'}
+					</button>
+				</div>
+			)}
+		</div>
+	)
+}
 
 const config = {
 	showBackdrop: true,
-	// tipContent: ({step, lastStep, curretStepConfig, previousStep, nextStep, onSkip}) => {
-	// 	return <>
-	// 		<h1 onClick={nextStep}>Manual Tip content {step}</h1>
-	// 		{curretStepConfig?.content}
-	// 	</>
-	// },
+	tipContent: TipContent,
+	highLighter: HighLighter,
 	steps: {
 		1: {
 			id: 'step-1',

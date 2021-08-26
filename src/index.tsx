@@ -1,9 +1,23 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import Tippy from '@tippyjs/react'
-import './css/onboarding.css'
+// import './css/onboarding.css'
 import 'tippy.js/dist/tippy.css'
 import 'tippy.js/animations/shift-toward-subtle.css'
 import getCompositeRect from '@popperjs/core/lib/dom-utils/getCompositeRect'
+
+const HighLighter: React.FC<any> = ({ id, rectRef, onRectClick, config }) => {
+	return (
+		<div
+			id={id}
+			ref={rectRef}
+			style={{ visibility: 'hidden' }}
+			className={`hightlightRect ${
+				config.showBackdrop ? 'withDropshadow' : ''
+			}`}
+			onClick={onRectClick}
+		/>
+	)
+}
 
 const TipContent: React.FC<any> = ({
 	start,
@@ -110,7 +124,6 @@ const OnBoarding: React.FC<any> = ({ id, config, start = false, onClose }) => {
 			let position = { x: 0, y: 0 }
 			try {
 				if (conf.parentId) {
-					console.log(document.getElementById(conf.parentId))
 					position = getCompositeRect(
 						element,
 						document.getElementById(conf.parentId)!,
@@ -121,8 +134,7 @@ const OnBoarding: React.FC<any> = ({ id, config, start = false, onClose }) => {
 				}
 				rectRef.current.style.left = position.x + 'px'
 				rectRef.current.style.top = position.y + 'px'
-			}
-			catch(e) {
+			} catch (e) {
 				console.error(e)
 			}
 		}
@@ -133,10 +145,14 @@ const OnBoarding: React.FC<any> = ({ id, config, start = false, onClose }) => {
 	}, [step, lastStep, start])
 
 	const TipContentElement = config.tipContent ? config.tipContent : TipContent
+	const HighLighterElement = config.highLighter
+		? config.highLighter
+		: HighLighter
 
 	return (
 		<React.Fragment>
 			<Tippy
+				className={config.className ? config.className : ''}
 				placement='auto'
 				reference={curretStepConfig?.element || null}
 				allowHTML
@@ -152,15 +168,12 @@ const OnBoarding: React.FC<any> = ({ id, config, start = false, onClose }) => {
 				animation='shift-toward-subtle'
 				visible={visible}
 			/>
-			<div
-				id={id}
-				ref={rectRef}
-				style={{ visibility: 'hidden' }}
-				className={`hightlightRect ${
-					config.showBackdrop ? 'withDropshadow' : ''
-				}`}
-				onClick={onRectClick}
-			/>
+			{React.cloneElement(<HighLighterElement />, {
+				id,
+				rectRef,
+				onRectClick,
+				config
+			} as any)}
 		</React.Fragment>
 	)
 }

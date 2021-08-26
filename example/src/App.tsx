@@ -7,9 +7,73 @@ import '@namicgreen/onboarding/src/css/onboarding.css'
 import Test from './components/test'
 import config from './constants/onboarding-config'
 
-export default function App() {
-	const [start, setStart] = useState(false)
+import { Box } from '@material-ui/core'
+import { createTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles'
+import { orange, green } from '@material-ui/core/colors'
 
+const orangeTheme = createTheme({
+	palette: {
+		secondary: {
+			main: orange[500]
+		}
+	}
+})
+
+const greenTheme = createTheme({
+	palette: {
+		secondary: {
+			main: green[500]
+		}
+	}
+})
+
+export default function App() {
+	const [themeName, setThemeName] = useState('orage')
+	return (
+		<ThemeProvider theme={themeName === 'orage' ? orangeTheme : greenTheme}>
+			<label>
+				Make green theme : <input
+					type='checkbox'
+					checked={themeName === 'green'}
+					onChange={() =>
+						setThemeName((name) => (name === 'orage' ? 'green' : 'orage'))
+					}
+				/>
+			</label>
+			<ThemeTest />
+			<br />
+			<AppContent />
+		</ThemeProvider>
+	)
+}
+
+const useStyles = makeStyles(theme => ({
+	boxClass: {
+		backgroundColor: theme.palette.secondary.main,
+	}
+})
+);
+
+const ThemeTest = () => {
+	const classes = useStyles()
+	return <Box width="40px" height="40px" className={classes.boxClass} />
+}
+
+const useStylesApp = makeStyles(theme => ({
+	"@global": {
+		'.tippy-content': {
+			backgroundColor: theme.palette.secondary.main,
+		},
+		'.tippy-arrow': {
+			color: theme.palette.secondary.main,
+		}
+	}
+})
+);
+
+const AppContent = () => {
+	const [start, setStart] = useState(false)
+	useStylesApp()
 	// start intro automatically
 	useEffect(() => {
 		setTimeout(() => {
@@ -21,7 +85,7 @@ export default function App() {
 		<>
 			<button onClick={() => setStart(true)}>Start Intro</button>
 			<OnBoarding
-				id="intro-1"
+				id='intro-1'
 				config={config}
 				start={start}
 				onClose={() => setStart(false)}
@@ -36,4 +100,3 @@ export default function App() {
 		</>
 	)
 }
-
